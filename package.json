@@ -1,0 +1,68 @@
+{
+  "name": "microservice-template",
+  "version": "0.0.1",
+  "main": "microservice-template.js",
+  "private": true,
+  "scripts": {
+    "build": "sh ./tasks/build.sh",
+    "git:version": "git-rev",
+    "lint": "eslint src test",
+    "lint:fix": "eslint src test --fix",
+    "start": "node .",
+    "start:watch": "nodemon .",
+    "test": "sh ./tasks/create-schema.sh && export NODE_ENV=test && npm run lint && nyc mocha --recursive --timeout 15000",
+    "test:app": "sh ./tasks/create-schema.sh && export NODE_ENV=test && node ./node_modules/.bin/_mocha --recursive",
+    "test:only": "export NODE_ENV=test && node ./node_modules/.bin/_mocha --recursive --timeout 15000",
+    "test:coverage": "sh ./tasks/create-schema.sh && export NODE_ENV=test && nyc mocha --recursive --timeout 15000",
+    "tdd": "npm run test:app -- --watch",
+    "preversion": "npm test && npm shrinkwrap",
+    "postversion": "git push origin HEAD && git push origin $(git describe --tags)"
+  },
+  "config": {
+    "database": {
+      "group": "com.mulesoft.microservice-template",
+      "name": "microservice-template-db-migrations",
+      "version": "0.0.1"
+    }
+  },
+  "dependencies": {
+    "@mulesoft/error-coercing-middleware": "~0.2.0",
+    "@mulesoft/exchange-auditlog": "~0.0.8",
+    "@mulesoft/exchange-auth-components": "~3.2.2",
+    "@mulesoft/logger-helper": "~2.1.2",
+    "@newrelic/native-metrics": "~2.1.1",
+    "bluebird": "~3.4.6",
+    "body-parser": "~1.17.2",
+    "config": "~1.24.0",
+    "dependable": "~0.2.5",
+    "express": "~4.15.3",
+    "expressify": "~1.0.0",
+    "http-errors": "~1.5.1",
+    "lodash": "~4.17.2",
+    "newrelic": "~1.37.0",
+    "osprey-middleware": "~0.1.0",
+    "superagent": "~3.5.2"
+  },
+  "devDependencies": {
+    "chai": "~3.5.0",
+    "chai-as-promised": "~6.0.0",
+    "chai-like": "~0.2.10",
+    "eslint": "~3.10.2",
+    "eslint-config-airbnb-base": "~10.0.1",
+    "eslint-plugin-import": "~2.2.0",
+    "git-rev-cli": "~0.1.0",
+    "http-bat": "~2.0.0-alpha.23",
+    "mocha": "~3.1.2",
+    "nock": "~9.0.2",
+    "nodemon": "~1.11.0",
+    "nyc": "~10.2.0",
+    "sinon": "~1.17.6",
+    "sinon-as-promised": "~4.0.2",
+    "sinon-chai": "~2.8.0",
+    "supertest": "~2.0.1"
+  },
+  "engines": {
+    "node": "6.9.1",
+    "npm": "3.10.9"
+  }
+}

@@ -1,0 +1,12 @@
+name: microservice-template
+description: Microservice Tempalte
+version: 0.1.0
+keywords:
+  - miscroservice
+  - template
+home: "https://github.com/mulesoft/microservice-template"
+sources:
+  - "https://github.com/mulesoft/microservice-template"
+maintainers:
+  - name: Exchange Dev Team
+    email: exchange-dev@mulesoft.com

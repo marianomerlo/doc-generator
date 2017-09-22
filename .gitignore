@@ -1,0 +1,15 @@
+node_modules
+
+# Coverage directory used by tools like istanbul
+coverage
+.nyc_output
+
+# New Relic logs
+newrelic_agent.log
+
+npm-debug.log
+VERSION
+dist
+artifact
+.DS_Store
+newrelic_agent.log

@@ -1,0 +1,7 @@
+product: exchange
+component: microservice-template
+asset: service
+
+strategy: node
+requires:
+  deployment: true
