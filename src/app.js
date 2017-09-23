@@ -1,32 +1,27 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const errorCoercing = require('@mulesoft/error-coercing-middleware');
+const path = require('path');
 
 module.exports = function $app(
-  apiV1Router,
-  bulletTracingMiddleware,
-  errorLoggingMiddleware,
-  errorMiddleware,
-  requestLoggerMiddleware
+  basicController,
+  operaService,
+  errorMiddleware
 ) {
   const app = express();
-  const errorCoercingMiddleware = errorCoercing();
 
   // ---
-
-  app.use(bulletTracingMiddleware);
-  app.use(requestLoggerMiddleware);
-
+  app.set('view engine', 'pug');
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded());
+
+  // ---
+  app.get('/', function (req, res) {
+    res.render('index', { title: 'Hey', operas: operaService.getOperas() });
+  });
+  app.post('/basic',       basicController.post)
 
   // ---
 
-  app.use(apiV1Router);
-
-  // ---
-
-  app.use(errorLoggingMiddleware);
-  app.use(errorCoercingMiddleware);
   app.use(errorMiddleware);
 
   return app;

@@ -3,6 +3,7 @@ const errors = require('http-errors');
 module.exports = function errorMiddleware() {
   return function innerErrorMiddleware(err, req, res, next) {
     // Piping the response to the client
+    console.error(err);
     if (res.headersSent) {
       // Express handle the error and stop sending data to the client
       return next(err);

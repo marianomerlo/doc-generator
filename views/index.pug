@@ -1,0 +1,18 @@
+html
+  head
+    title= title
+  body
+    h1= 'Hola'
+    h2= 'Este es el listado de textos disponibles: '
+    ol
+      each opera in operas
+        li= opera.title
+
+    h2= 'Por favor, escribe todos los textos que quieras en tu documento en el orden correspondiente, separados por coma. Por ejemplo, si queres un documento con los textos 4 6 y 2, escribe: "4,6,2".'
+
+    form(action='/basic',method='post')
+      input(
+        type='text'
+        name='elections'
+      )
+      input(type='submit')

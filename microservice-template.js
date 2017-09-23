@@ -1,4 +1,3 @@
-require('newrelic');
 const containerFactory     = require('./src/containerFactory');
 // ---
 
@@ -9,9 +8,9 @@ if (require.main === module) {
 // ---
 
 function main() {
-  containerFactory.createContainer().resolve(function (app, config, logger) {
+  containerFactory.createContainer().resolve(function (app, config) {
     app.listen(config.express.port, config.express.host, () => {
-      logger.info(`listening on ${config.express.host}:${config.express.port} ...`);
+      console.info(`listening on ${config.express.host}:${config.express.port} ...`);
     });
   });
 }
