@@ -18,6 +18,7 @@ module.exports = function basicController(
    */
   function post(req, res) {
     const elections = req.body.elections.split(',');
+    const docName = req.body.docName || 'My doc';
 
     const operas = operaService.getOperas();
 
@@ -39,7 +40,7 @@ module.exports = function basicController(
     // res is express' Response object
     const exporter = new docx.ExpressPacker(doc, res);
 
-    exporter.pack('My First Document');
+    exporter.pack(docName);
 
     // done! A file called 'My First Document.docx'
     // will be in your file system if you used LocalPacker

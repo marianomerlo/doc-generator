@@ -8,11 +8,33 @@ html
       each opera in operas
         li= opera.title
 
-    h2= 'Por favor, escribe todos los textos que quieras en tu documento en el orden correspondiente, separados por coma. Por ejemplo, si queres un documento con los textos 4 6 y 2, escribe: "4,6,2".'
+    h2= 'Por favor, completa el siguiente formulario y luego presiona el boton "Generar Documento"'
 
-    form(action='/basic',method='post')
-      input(
-        type='text'
-        name='elections'
-      )
-      input(type='submit')
+    div
+      form(action='/basic',method='post')
+        span
+          text= 'Escribe todos los numeros de los textos que quieras en tu documento, ordenados, y separados por coma. Ej: 4,1,2'
+        br
+        br
+        input(
+          type='text'
+          name='elections'
+          style='width:500px;border:1px solid'
+        )
+        br
+        br
+        br
+        span
+          text= 'Escribe el nombre con el que quieres que se genere tu documento'
+        br
+        input(
+          type='text'
+          name='docName'
+          style='width:500px;border:1px solid'
+        )
+        br
+        br
+        br
+
+
+        input(type='submit', value='Generar Documento')
